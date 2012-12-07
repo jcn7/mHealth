@@ -33,16 +33,14 @@ def extract_features(input, col=8):
     with open(input, 'r') as fin:
         dataReader = csv.reader(fin, delimiter=',')
         for row in dataReader:
-            timestamp.appen(int(row[0]))
+            timestamp.append(int(row[0]))
             data.append(float(row[col]))
     i = 0
-    feature_matrix[]
+    feature_matrix = []
     while i < len(data):
-        end = min(i+WINDOW_SIZE, len(data))
+        end = min(i+WINDOW_SIZE, len(data)-1)
         r = compute_features(timestamp[i], timestamp[end], data[i:end])
-        result.append(r)
+        feature_matrix.append(r)
+        i += WINDOW_SIZE
 
     return feature_matrix
-
-
-
