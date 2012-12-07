@@ -21,8 +21,8 @@ def do_label(data, label_file):
                 label.append(LABEL_MAP[row[1]])
 
     for e in data:
-        start = data[0]
-        end = data[1]
+        start = e[0]
+        end = e[1]
 
         s_i = max(find_first(start, init, timestamp)-1, 0)
         e_i = find_first(end, s_i, timestamp)
@@ -50,6 +50,6 @@ def find_first(t, start, list):
     return len(list)
 
 def compute_label(list):
-    if len(list) == 0:
+    if len(list) == 0 or max(list) == 0:
         return 1
     return list.index(max(list))

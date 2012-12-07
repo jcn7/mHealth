@@ -2,7 +2,7 @@
 
 import numpy, csv
 
-WINDOW_SIZE = 300
+WINDOW_SIZE = 30
 N = 20
 
 def compute_features(s_time, e_time, data):
