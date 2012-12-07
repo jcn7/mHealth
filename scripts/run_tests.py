@@ -65,11 +65,24 @@ def main():
     all_data = []
     all_label = []
 
-    d, t = compile_data('../subject_7/BHGN', '../subject_7/label.txt')
-    ad = numpy.array(d)
-    at = numpy.array(t)
+    for i in xrange(len(inputs)):
+        d, t = compile_data(inputs[i], labels[i])
+        all_data += d
+        all_label += t
+
+    d = numpy.array(all_data)
+    l = numpy.array(all_label)
+
+    run_lasso(d, l)
+    run_naive_bayes_gaus(d, l)
+    run_svm(d, l)
+
+    # single file, good for debuging and stuff
+    #d, t = compile_data('../subject_7/BHGN', '../subject_7/label.txt')
+    #ad = numpy.array(d)
+    #at = numpy.array(t)
     #run_lasso(ad,at)
     #run_naive_bayes_gaus(ad, at)
-    run_svm(ad, at)
+    #run_svm(ad, at)
 
 main()
